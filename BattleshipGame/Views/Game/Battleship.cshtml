@@ -1,0 +1,73 @@
+﻿<section>
+    <div class="ml-auto mr-auto title">
+        <span>Battleship</span>
+    </div>
+    <div class="ml-auto mr-auto start">
+        <button onclick="startGame();" type="button" class="btn">Start simulation</button>
+    </div>
+    <div class="cards">
+        <!--You-->
+        <div class="card">
+            <span class="positionHorizontal">1 &nbsp;&ensp; 2 &ensp; 3 &nbsp;&nbsp; 4 &nbsp;&nbsp; 5 &nbsp;&nbsp; 6 &nbsp;&nbsp; 7 &nbsp;&ensp; 8 &nbsp;&nbsp; 9 &nbsp; 10</span>
+            <ul class="positionVertical"><li>A</li><li style="margin-top:-2px;">B</li><li style="margin-top:-2px;">C</li><li style="margin-top:-2px;">D</li><li style="margin-top:-2px;">E</li><li>F</li><li style="margin-top:-2px;">G</li><li style="margin-top:-2px;">H<li style="margin-top:-3px;">I</li><li style="margin-top:-2px;">J</li></ul>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <span class="player">You</span>
+        </div>
+
+        <!--Bot-->
+        <div class="card">
+            <span class="positionHorizontal">1 &nbsp;&ensp; 2 &ensp; 3 &nbsp;&nbsp; 4 &nbsp;&nbsp; 5 &nbsp;&nbsp; 6 &nbsp;&nbsp; 7 &nbsp;&ensp; 8 &nbsp;&nbsp; 9 &nbsp; 10</span>
+            <ul class="positionVertical"><li>A</li><li style="margin-top:-2px;">B</li><li style="margin-top:-2px;">C</li><li style="margin-top:-2px;">D</li><li style="margin-top:-2px;">E</li><li>F</li><li style="margin-top:-2px;">G</li><li style="margin-top:-2px;">H<li style="margin-top:-3px;">I</li><li style="margin-top:-2px;">J</li></ul>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            <span class="player">Bot</span>
+        </div>
+    </div>
+
+
+    <!--animation-->
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        function startGame() {
+            $.ajax({
+                url: '/Game/GenerateBoards',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function () {
+                    alert('Przepraszamy, wystąpił problem!');
+                },
+                complete: function () {
+                }
+            });
+        }
+
+    </script>
+}
