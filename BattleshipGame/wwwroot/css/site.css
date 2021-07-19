@@ -24,7 +24,6 @@ code {
 section {
     position: relative;
     width: 100%;
-    height: 100vh;
     background: #3586ff;
     overflow: hidden;
 }
@@ -155,3 +154,110 @@ section {
             border-color: white;
             transform: scale(0.9);
         }
+
+.shipHorizontalLeft {
+    background-color: black;
+    border-radius: 5px 0 0 5px;
+    height: 20px;
+    width: 40px;
+    margin-left: 10px;
+    margin-top: 13px;
+}
+
+.shipHorizontalMid {
+    background-color: black;
+    height: 20px;
+    width: 50px;
+    margin-top: 13px;
+}
+
+.shipHorizontalRight {
+    background-color: black;
+    border-radius: 0 5px 5px 0;
+    height: 20px;
+    width: 40px;
+    margin-top: 13px;
+    margin-right: 10px;
+}
+
+.shipVerticalDown {
+    background-color: black;
+    border-radius: 0 0 5px 5px;
+    height: 40px;
+    width: 20px;
+    margin-left: 13px;
+    margin-bottom: 10px;
+}
+
+.shipVerticalMid {
+    background-color: black;
+    border-radius: 0 0 5px 5px;
+    height: 50px;
+    width: 20px;
+    margin-left: 13px;
+}
+
+.shipVerticalUp {
+    background-color: black;
+    border-radius: 5px 5px 0 0;
+    height: 40px;
+    width: 20px;
+    margin-left: 13px;
+    margin-top: 10px;
+}
+
+.fa-times {
+    color: red;
+    font-size: 70px;
+    margin-top: -23px;
+    margin-left: -11px;
+}
+
+.fa-bomb {
+    color: black;
+    font-size: 35px;
+    margin-top: -8px;
+    margin-left: 8px;
+}
+
+.spinner-border{
+    position:absolute;
+    width:200px;
+    height:200px;
+    margin-top:150px;
+    margin-left:150px;
+}
+
+.spinner-grow {
+    position: absolute;
+    right: 170px;
+    bottom:-46px;
+}
+
+.fa-eye, .fa-eye-slash {
+    position: absolute;
+    font-size: 40px;
+    right: 10px;
+    color: white;
+    top: -80px;
+    cursor: pointer;
+}
+
+.waves {
+    height: 200px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .cards {
+        display:grid;
+    }
+
+    .card {
+        margin-bottom:120px;
+    }
+
+    .waves {
+        margin-top: -100px;
+    }
+}
+
