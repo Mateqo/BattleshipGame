@@ -43,7 +43,12 @@ namespace BattleshipGame.Services
                     break;
             }
 
-            player.Ships.Add(new Ship { Size = sizeShip, Positions = positions });
+            player.Ships.Add(new Ship
+            {
+                Size = sizeShip,
+                Positions = positions,
+                isHorizontal = direction == 'E' || direction == 'W' ? true : false
+            }); ;
         }
     }
 }

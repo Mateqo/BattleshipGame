@@ -7,19 +7,22 @@
     </div>
     <div class="cards">
         <!--You-->
-        <div class="card">
+        <div id="yourBoard" class="card">
+            <div class="spinner-border text-primary" role="status" style="display:none">
+                <span class="sr-only">Loading...</span>
+            </div>
             <span class="positionHorizontal">1 &nbsp;&ensp; 2 &ensp; 3 &nbsp;&nbsp; 4 &nbsp;&nbsp; 5 &nbsp;&nbsp; 6 &nbsp;&nbsp; 7 &nbsp;&ensp; 8 &nbsp;&nbsp; 9 &nbsp; 10</span>
             <ul class="positionVertical"><li>A</li><li style="margin-top:-2px;">B</li><li style="margin-top:-2px;">C</li><li style="margin-top:-2px;">D</li><li style="margin-top:-2px;">E</li><li>F</li><li style="margin-top:-2px;">G</li><li style="margin-top:-2px;">H<li style="margin-top:-3px;">I</li><li style="margin-top:-2px;">J</li></ul>
-            <div class="field"></div><div class="field"><div class="shipHorizontalLeft"><i class="fas fa-times"></i></div></div><div class="field"><div class="shipHorizontalMid"><i class="fas fa-bomb"></i></div></div><div class="field"><div class="shipHorizontalRight"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"><div class="shipVerticalUp"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"><div class="shipVerticalMid"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"><div class="shipVerticalDown"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            @*<div class="field"></div><div class="field"><div class="shipHorizontalLeft"><i class="fas fa-times"></i></div></div><div class="field"><div class="shipHorizontalMid"><i class="fas fa-bomb"></i></div></div><div class="field"><div class="shipHorizontalRight"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"><div class="shipVerticalUp"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"><div class="shipVerticalMid"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"><div class="shipVerticalDown"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>*@
             <span class="player">You</span>
             <div class="spinner-grow text-light" role="status">
                 <span class="sr-only">Loading...</span>
@@ -27,26 +30,26 @@
         </div>
 
         <!--Bot-->
-        <div class="card">
+        <div id="botBoard" class="card">
             <i class="fas fa-eye"></i>
             <i class="fas fa-eye-slash"></i>
-            <div class="spinner-border text-primary" role="status">
+            <div class="spinner-border text-primary" role="status" style="display:none">
                 <span class="sr-only">Loading...</span>
             </div>
             <span class="positionHorizontal">1 &nbsp;&ensp; 2 &ensp; 3 &nbsp;&nbsp; 4 &nbsp;&nbsp; 5 &nbsp;&nbsp; 6 &nbsp;&nbsp; 7 &nbsp;&ensp; 8 &nbsp;&nbsp; 9 &nbsp; 10</span>
             <ul class="positionVertical"><li>A</li><li style="margin-top:-2px;">B</li><li style="margin-top:-2px;">C</li><li style="margin-top:-2px;">D</li><li style="margin-top:-2px;">E</li><li>F</li><li style="margin-top:-2px;">G</li><li style="margin-top:-2px;">H<li style="margin-top:-3px;">I</li><li style="margin-top:-2px;">J</li></ul>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-            <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+            @*<div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
+                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>*@
             <span class="player">Bot</span>
-            <div class="spinner-grow text-light" role="status">
+            <div id="test" class="spinner-grow text-light" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
@@ -64,20 +67,77 @@
 
 @section Scripts {
     <script type="text/javascript">
-        function startGame() {
+        $(document).ready(function () {
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 10; j++) {
+                    $('#yourBoard').append('<div id="' + "you" + i + j + '" class="field"></div>');
+                    $('#botBoard').append('<div id="' + "bot" + i + j + '" class="field"></div>');
+                }
+            }
+        });
+        function generateShips() {
             $.ajax({
                 url: '/Game/GenerateBoards',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data)
+
+                    for (var i = 0; i < data.yourShips.length; i++) {
+                        var isHorizontal = data.yourShips[i].isHorizontal;
+                        if (isHorizontal) {
+                            var indexMinH = Math.min(...data.yourShips[i].positions.map(position => position.horizontal));
+                            var indexMaxH = Math.max(...data.yourShips[i].positions.map(position => position.horizontal));
+                        }
+                        else {
+                            var indexMinV = Math.min(...data.yourShips[i].positions.map(position => position.vertical));
+                            var indexMaxV = Math.max(...data.yourShips[i].positions.map(position => position.vertical));
+                        }
+
+
+                        for (var j = 0; j < data.yourShips[i].positions.length; j++) {
+                            var positionHorizontal = data.yourShips[i].positions[j].horizontal;
+                            var positionVertical = data.yourShips[i].positions[j].vertical;
+
+                            if (isHorizontal) {
+                                switch (positionHorizontal) {
+                                    case indexMinH:
+                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalLeft"></div>');
+                                        break;
+                                    case indexMaxH:
+                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalRight"></div>');
+                                        break;
+                                    default:
+                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalMid"></div>');
+                                }
+                            }
+                            else {
+                                switch (positionVertical) {
+                                    case indexMinV:
+                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalUp"></div>');
+                                        break;
+                                    case indexMaxV:
+                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalDown"></div>');
+                                        break;
+                                    default:
+                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalMid"></div>');
+                                }
+                            }
+                        }
+
+                    }
                 },
                 error: function () {
                     alert('Przepraszamy, wystąpił problem!');
                 },
                 complete: function () {
+                    $('.spinner-border').hide();
                 }
             });
+        }
+        function startGame() {
+            $('.spinner-border').show();
+            setTimeout(generateShips, 500);
+
         }
 
     </script>
