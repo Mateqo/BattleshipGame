@@ -6,6 +6,6 @@ namespace BattleshipGame.Models
     {
         public int Size { get; set; }
         public bool isHorizontal { get; set; }
-        public List<Position> Positions { get; set; }
+        public List<Position> Positions { get; set; } 
     }
 }

@@ -247,6 +247,10 @@ section {
     height: 200px;
 }
 
+.hideShip{
+    display:none;
+}
+
 @media only screen and (max-width: 1200px) {
     .cards {
         display:grid;

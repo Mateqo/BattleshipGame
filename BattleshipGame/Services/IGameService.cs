@@ -7,5 +7,6 @@ namespace BattleshipGame.Services
         void GeneratePositionForShips(Player player);
         void SelectPosition(int sizeShip, int startPositionV, int startPositionH, char direction, Player player);
         bool CanSelectPosition(int sizeShip, int startPositionV, int startPositionH, char direction, Player player);
+        bool CheckField(int positionH, int positionV, Player enemy);
     }
 }

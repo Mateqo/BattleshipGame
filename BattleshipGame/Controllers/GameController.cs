@@ -42,7 +42,22 @@ namespace BattleshipGame.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"Error while generate position for you: {e}");
+                _logger.LogError($"Error while generating position for you: {e}");
+                return Json(new { Success = false });
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Shoot()
+        {
+            try
+            {
+                
+                return Json(new { Success = true } );
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error while shooting: {e}");
                 return Json(new { Success = false });
             }
         }

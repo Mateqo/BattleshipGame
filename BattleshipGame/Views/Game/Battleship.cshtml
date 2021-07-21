@@ -3,7 +3,7 @@
         <span>Battleship</span>
     </div>
     <div class="ml-auto mr-auto start">
-        <button onclick="startGame();" type="button" class="btn">Start simulation</button>
+        <button id="start" onclick="startGame();" type="button" class="btn">Start simulation</button>
     </div>
     <div class="cards">
         <!--You-->
@@ -31,8 +31,8 @@
 
         <!--Bot-->
         <div id="botBoard" class="card">
-            <i class="fas fa-eye"></i>
-            <i class="fas fa-eye-slash"></i>
+            <i onclick="showShips();" class="fas fa-eye"></i>
+            <i onclick="hideShips();" class="fas fa-eye-slash" style="display:none;right:8px !important;"></i>
             <div class="spinner-border text-primary" role="status" style="display:none">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -75,70 +75,102 @@
                 }
             }
         });
+        function showShips() {
+            $('.hideShip').show();
+            $('.fa-eye').hide();
+            $('.fa-eye-slash').show();
+        }
+        function hideShips() {
+            $('.hideShip').hide();
+            $('.fa-eye-slash').hide();
+            $('.fa-eye').show();
+        }
+        function startGame() {
+            $('.spinner-border').show();
+            $('.field').css('border', 'none');
+            setTimeout(generateShips, 500);
+        }
         function generateShips() {
             $.ajax({
                 url: '/Game/GenerateBoards',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-
-                    for (var i = 0; i < data.yourShips.length; i++) {
-                        var isHorizontal = data.yourShips[i].isHorizontal;
-                        if (isHorizontal) {
-                            var indexMinH = Math.min(...data.yourShips[i].positions.map(position => position.horizontal));
-                            var indexMaxH = Math.max(...data.yourShips[i].positions.map(position => position.horizontal));
-                        }
-                        else {
-                            var indexMinV = Math.min(...data.yourShips[i].positions.map(position => position.vertical));
-                            var indexMaxV = Math.max(...data.yourShips[i].positions.map(position => position.vertical));
-                        }
-
-
-                        for (var j = 0; j < data.yourShips[i].positions.length; j++) {
-                            var positionHorizontal = data.yourShips[i].positions[j].horizontal;
-                            var positionVertical = data.yourShips[i].positions[j].vertical;
-
-                            if (isHorizontal) {
-                                switch (positionHorizontal) {
-                                    case indexMinH:
-                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalLeft"></div>');
-                                        break;
-                                    case indexMaxH:
-                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalRight"></div>');
-                                        break;
-                                    default:
-                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalMid"></div>');
-                                }
-                            }
-                            else {
-                                switch (positionVertical) {
-                                    case indexMinV:
-                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalUp"></div>');
-                                        break;
-                                    case indexMaxV:
-                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalDown"></div>');
-                                        break;
-                                    default:
-                                        $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalMid"></div>');
-                                }
-                            }
-                        }
-
-                    }
+                    displayShipsOnBoard("you", data.yourShips);
+                    displayShipsOnBoard("bot", data.botShips);
                 },
                 error: function () {
-                    alert('Przepraszamy, wystąpił problem!');
+                    alert('Failed!');
                 },
                 complete: function () {
                     $('.spinner-border').hide();
+                    $('.field').css('border', 'grey solid 1px');
+                    $('#start').text("Restart");
                 }
             });
         }
-        function startGame() {
-            $('.spinner-border').show();
-            setTimeout(generateShips, 500);
+        function displayShipsOnBoard(player, shipsArray) {
+            for (var i = 0; i < shipsArray.length; i++) {
+                var isHorizontal = shipsArray[i].isHorizontal;
+                if (isHorizontal) {
+                    var indexMinH = Math.min(...shipsArray[i].positions.map(position => position.horizontal));
+                    var indexMaxH = Math.max(...shipsArray[i].positions.map(position => position.horizontal));
+                }
+                else {
+                    var indexMinV = Math.min(...shipsArray[i].positions.map(position => position.vertical));
+                    var indexMaxV = Math.max(...shipsArray[i].positions.map(position => position.vertical));
+                }
 
+
+                for (var j = 0; j < shipsArray[i].positions.length; j++) {
+                    var positionHorizontal = shipsArray[i].positions[j].horizontal;
+                    var positionVertical = shipsArray[i].positions[j].vertical;
+
+                    if (isHorizontal) {
+                        switch (positionHorizontal) {
+                            case indexMinH:
+                                if (player === "you")
+                                    $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalLeft"></div>');
+                                else
+                                    $('#bot' + positionVertical + positionHorizontal).append('<div class="shipHorizontalLeft hideShip"></div>');
+                                break;
+                            case indexMaxH:
+                                if (player === "you")
+                                    $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalRight"></div>');
+                                else
+                                    $('#bot' + positionVertical + positionHorizontal).append('<div class="shipHorizontalRight hideShip"></div>');
+                                break;
+                            default:
+                                if (player === "you")
+                                    $('#you' + positionVertical + positionHorizontal).append('<div class="shipHorizontalMid"></div>');
+                                else
+                                    $('#bot' + positionVertical + positionHorizontal).append('<div class="shipHorizontalMid hideShip"></div>');
+                        }
+                    }
+                    else {
+                        switch (positionVertical) {
+                            case indexMinV:
+                                if (player === "you")
+                                    $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalUp"></div>');
+                                else
+                                    $('#bot' + positionVertical + positionHorizontal).append('<div class="shipVerticalUp hideShip"></div>');
+                                break;
+                            case indexMaxV:
+                                if (player === "you")
+                                    $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalDown"></div>');
+                                else
+                                    $('#bot' + positionVertical + positionHorizontal).append('<div class="shipVerticalDown hideShip"></div>');
+                                break;
+                            default:
+                                if (player === "you")
+                                    $('#you' + positionVertical + positionHorizontal).append('<div class="shipVerticalMid"></div>');
+                                else
+                                    $('#bot' + positionVertical + positionHorizontal).append('<div class="shipVerticalMid hideShip"></div>');
+                        }
+                    }
+                }
+
+            }
         }
-
     </script>
 }

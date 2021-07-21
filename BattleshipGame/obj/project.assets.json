@@ -662,11 +662,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\BattleshipGame\\BattleshipGame\\BattleshipGame.csproj",
+      "projectUniqueName": "D:\\Users\\User\\Desktop\\repozytorium\\BattleshipGame\\BattleshipGame\\BattleshipGame.csproj",
       "projectName": "BattleshipGame",
-      "projectPath": "C:\\Users\\User\\source\\repos\\BattleshipGame\\BattleshipGame\\BattleshipGame.csproj",
+      "projectPath": "D:\\Users\\User\\Desktop\\repozytorium\\BattleshipGame\\BattleshipGame\\BattleshipGame.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\BattleshipGame\\BattleshipGame\\obj\\",
+      "outputPath": "D:\\Users\\User\\Desktop\\repozytorium\\BattleshipGame\\BattleshipGame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
