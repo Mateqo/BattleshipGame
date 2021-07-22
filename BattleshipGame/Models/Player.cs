@@ -5,8 +5,13 @@ namespace BattleshipGame.Models
     public class Player
     {
         public int PlayerId { get; set; }
+        public int? LastHitNoDestroyedPositionH { get; set; }
+        public int? LastHitNoDestroyedPositionV { get; set; }
+        public bool IsSecondShoot { get; set; } // in third shoot 2 possible direction 
+        public bool IsHorizontalInThirdShoot { get; set; } // possible direction in third shoot
         public char[,] Board { get; set; }
         public List<Ship> Ships { get; set; }
+        public List<Position> Shoots { get; set; }
 
         public Player()
         {

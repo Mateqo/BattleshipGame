@@ -48,12 +48,15 @@ namespace BattleshipGame.Controllers
         }
 
         [HttpGet]
-        public IActionResult Shoot()
+        public IActionResult Shoot(string player)
         {
             try
             {
-                
-                return Json(new { Success = true } );
+                var playerWithTurn = player == "You" ? You : Bot;
+                var enemy = player == "You" ? Bot : You;
+                var generateResult = _gameService.GenerateRandomShoot(playerWithTurn);
+                var shotResult = _gameService.Shoot(generateResult.Horizontal, generateResult.Vertical, enemy, playerWithTurn);
+                return Json(new { Success = true, ShootResult = shotResult });
             }
             catch (Exception e)
             {

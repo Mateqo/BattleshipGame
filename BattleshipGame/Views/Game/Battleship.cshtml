@@ -31,7 +31,7 @@
 
         <!--Bot-->
         <div id="botBoard" class="card">
-            <i onclick="showShips();" class="fas fa-eye"></i>
+            <i onclick="showShips();" class="fas fa-eye" style="display:none;"></i>
             <i onclick="hideShips();" class="fas fa-eye-slash" style="display:none;right:8px !important;"></i>
             <div class="spinner-border text-primary" role="status" style="display:none">
                 <span class="sr-only">Loading...</span>
@@ -106,6 +106,7 @@
                     $('.spinner-border').hide();
                     $('.field').css('border', 'grey solid 1px');
                     $('#start').text("Restart");
+                    $('.fa-eye').show();
                 }
             });
         }

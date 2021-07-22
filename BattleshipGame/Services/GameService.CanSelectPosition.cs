@@ -39,8 +39,7 @@ namespace BattleshipGame.Services
                     break;
             }
 
-
-            return canPlace;
+                return canPlace;
         }
     }
 }
