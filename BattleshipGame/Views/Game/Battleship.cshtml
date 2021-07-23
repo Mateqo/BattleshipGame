@@ -5,6 +5,9 @@
     <div class="ml-auto mr-auto start">
         <button id="start" onclick="startGame();" type="button" class="btn">Start simulation</button>
     </div>
+    <div class="end" style="display:none">
+        <span id="endText"></span>
+    </div>
     <div class="cards">
         <!--You-->
         <div id="yourBoard" class="card">
@@ -13,18 +16,8 @@
             </div>
             <span class="positionHorizontal">1 &nbsp;&ensp; 2 &ensp; 3 &nbsp;&nbsp; 4 &nbsp;&nbsp; 5 &nbsp;&nbsp; 6 &nbsp;&nbsp; 7 &nbsp;&ensp; 8 &nbsp;&nbsp; 9 &nbsp; 10</span>
             <ul class="positionVertical"><li>A</li><li style="margin-top:-2px;">B</li><li style="margin-top:-2px;">C</li><li style="margin-top:-2px;">D</li><li style="margin-top:-2px;">E</li><li>F</li><li style="margin-top:-2px;">G</li><li style="margin-top:-2px;">H<li style="margin-top:-3px;">I</li><li style="margin-top:-2px;">J</li></ul>
-            @*<div class="field"></div><div class="field"><div class="shipHorizontalLeft"><i class="fas fa-times"></i></div></div><div class="field"><div class="shipHorizontalMid"><i class="fas fa-bomb"></i></div></div><div class="field"><div class="shipHorizontalRight"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"><div class="shipVerticalUp"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"><div class="shipVerticalMid"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"><div class="shipVerticalDown"></div></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>*@
             <span class="player">You</span>
-            <div class="spinner-grow text-light" role="status">
+            <div id="yourTurn" class="spinner-grow text-light" role="status" style="display:none">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
@@ -38,18 +31,8 @@
             </div>
             <span class="positionHorizontal">1 &nbsp;&ensp; 2 &ensp; 3 &nbsp;&nbsp; 4 &nbsp;&nbsp; 5 &nbsp;&nbsp; 6 &nbsp;&nbsp; 7 &nbsp;&ensp; 8 &nbsp;&nbsp; 9 &nbsp; 10</span>
             <ul class="positionVertical"><li>A</li><li style="margin-top:-2px;">B</li><li style="margin-top:-2px;">C</li><li style="margin-top:-2px;">D</li><li style="margin-top:-2px;">E</li><li>F</li><li style="margin-top:-2px;">G</li><li style="margin-top:-2px;">H<li style="margin-top:-3px;">I</li><li style="margin-top:-2px;">J</li></ul>
-            @*<div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>
-                <div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div><div class="field"></div>*@
             <span class="player">Bot</span>
-            <div id="test" class="spinner-grow text-light" role="status">
+            <div id="botTurn" class="spinner-grow text-light" role="status" style="display:none">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
@@ -86,9 +69,24 @@
             $('.fa-eye').show();
         }
         function startGame() {
+            clearBoards();
             $('.spinner-border').show();
             $('.field').css('border', 'none');
             setTimeout(generateShips, 500);
+        }
+        function clearBoards() {
+            $('.shipHorizontalLeft').remove();
+            $('.shipHorizontalRight').remove();
+            $('.shipHorizontalMid').remove();
+            $('.shipVerticalDown').remove();
+            $('.shipVerticalUp').remove();
+            $('.shipVerticalMid').remove();
+            $('.fa-bomb').remove();
+            $('.fa-times').remove();
+            $('.end').hide();
+            isYourTurn = false;
+            isEnd = false;
+            isHit = false;
         }
         function generateShips() {
             $.ajax({
@@ -96,17 +94,89 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    displayShipsOnBoard("you", data.yourShips);
-                    displayShipsOnBoard("bot", data.botShips);
+                    if (data.success) {
+                        displayShipsOnBoard("you", data.yourShips);
+                        displayShipsOnBoard("bot", data.botShips);
+                        isYourTurn = Math.random() < 0.5;
+                        gameLogic();
+                    }
+                    else {
+                        console.log('Failed!');
+                    }
                 },
                 error: function () {
-                    alert('Failed!');
+                    console.log('Failed!');
                 },
                 complete: function () {
                     $('.spinner-border').hide();
                     $('.field').css('border', 'grey solid 1px');
                     $('#start').text("Restart");
                     $('.fa-eye').show();
+                }
+            });
+        }
+        var isYourTurn;
+        var isEnd;
+        var isHit;
+        function gameLogic() {
+            if (!isHit)
+                isYourTurn = !isYourTurn;
+
+
+            //loading spinner
+            if (isYourTurn) {
+                $('#yourTurn').show();
+                $('#botTurn').hide();
+            }
+            else {
+                $('#botTurn').show();
+                $('#yourTurn').hide();
+            }
+
+            if (isEnd) {
+                $('.end').show();
+                if (isYourTurn)
+                    $('#endText').text('YOU WIN');
+                else
+                    $('#endText').text('YOU LOSE');
+                $('.end').show();
+                return;
+            }
+            setTimeout(function () {
+                if (isYourTurn) {
+                    shoot("You", "bot")
+                }
+                else {
+                    shoot("Bot", "you")
+                }
+            }, 1000);
+        }
+        function shoot(Player, player) {
+            $.ajax({
+                url: '/Game/Shoot',
+                data: { player: Player },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success) {
+                        if (data.shootResult.isHit) {
+                            $('#' + player + data.shootResult.positionV + data.shootResult.positionH).append('<i class="fas fa-times"></i>');
+                        }
+                        else {
+                            $('#' + player + data.shootResult.positionV + data.shootResult.positionH).append('<i class="fas fa-bomb"></i>');
+                        }
+                        isEnd = data.shootResult.isEnd;
+                        isHit = data.shootResult.isHit;
+                        gameLogic();
+                    }
+                    else {
+                        console.log('Failed!');
+                    }
+                },
+                error: function () {
+                    console.log('Failed!');
+                },
+                complete: function () {
                 }
             });
         }

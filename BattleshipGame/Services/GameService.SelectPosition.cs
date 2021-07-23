@@ -6,7 +6,7 @@ namespace BattleshipGame.Services
 {
     public partial class GameService
     {
-        public void SelectPosition(int sizeShip, int startPositionV, int startPositionH, char direction, Player player)
+        public void SelectPosition(int sizeShip, int startPositionV, int startPositionH, char direction, Player player, Player enemy)
         {
             var positions = new List<PositionShip>();
 
@@ -55,7 +55,7 @@ namespace BattleshipGame.Services
             //}
             //Console.WriteLine();
 
-            // outline ship
+            // Zablokowanie stawianie statków koło siebie
             foreach (var position in positions)
             {
                 if (position.Horizontal + 1 < Configuration.HorizontalSize)

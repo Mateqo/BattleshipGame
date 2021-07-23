@@ -14,7 +14,7 @@ namespace BattleshipGame.Services
             {
                 isHit = true;
                 shipToHit.Positions.FirstOrDefault(x => x.Horizontal == positionH && x.Vertical == positionV).isHit = true;
-                // Hit and destroyed
+                // Trafiony i zatopiony
                 if (!shipToHit.Positions.Any(x => x.isHit == false))
                 {
                     shipToHit.isDestroyed = true;
@@ -23,10 +23,10 @@ namespace BattleshipGame.Services
                     playerWithTurn.IsSecondShoot = false;
 
                 }
-                // Only hit
+                // Tylko trafiony
                 else
                 {
-                    // If only hit and before was hit but without destroyed 
+                    // Jeżeli tylko trafimy i nie zatopimy a wcześniej trafiliśmy też bez zatopienia
                     if (playerWithTurn.LastHitNoDestroyedPositionH != null && playerWithTurn.LastHitNoDestroyedPositionV != null)
                     {
                         playerWithTurn.IsSecondShoot = true;
@@ -41,9 +41,12 @@ namespace BattleshipGame.Services
 
             return new ShootResult()
             {
-                IsDestroyed = shipToHit.isDestroyed,
+                IsEnd = enemy.Ships.Any(x => !x.isDestroyed) ? false : true,
+                IsDestroyed = shipToHit != null ? shipToHit.isDestroyed : false,
                 IsHit = isHit,
-                IsHorizontal = shipToHit.isHorizontal
+                IsHorizontal = shipToHit != null ? shipToHit.isHorizontal : false,
+                PositionV = positionV,
+                PositionH = positionH
             };
         }
     }

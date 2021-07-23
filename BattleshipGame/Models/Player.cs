@@ -7,19 +7,21 @@ namespace BattleshipGame.Models
         public int PlayerId { get; set; }
         public int? LastHitNoDestroyedPositionH { get; set; }
         public int? LastHitNoDestroyedPositionV { get; set; }
-        public bool IsSecondShoot { get; set; } // in third shoot 2 possible direction 
-        public bool IsHorizontalInThirdShoot { get; set; } // possible direction in third shoot
+        public bool IsSecondShoot { get; set; } // w trzecim strzale 2 możliwe kierunki
+        public bool IsHorizontalInThirdShoot { get; set; } // kierunek w trzecim strzale (mamy pewność pionowo statek lub poziomo)
         public char[,] Board { get; set; }
         public List<Ship> Ships { get; set; }
         public List<Position> Shoots { get; set; }
 
         public Player()
         {
-            Board = new char[Configuration.HorizontalSize, Configuration.VerticalSize];
+            Board = new char[Configuration.VerticalSize, Configuration.HorizontalSize];
             Ships = new List<Ship>();
+            Shoots = new List<Position>();
 
-            for (int i = 0; i < Configuration.HorizontalSize; i++)
-                for (int j = 0; j < Configuration.VerticalSize; j++)
+
+            for (int i = 0; i < Configuration.VerticalSize; i++)
+                for (int j = 0; j < Configuration.HorizontalSize; j++)
                     Board[i, j] = '-';
         }
     }

@@ -6,14 +6,14 @@ namespace BattleshipGame.Services
 {
     public partial class GameService
     {
-        public Position GenerateRandomShoot(Player player)
+        public Position GenerateRandomShoot(Player player, Player enemy)
         {
             Random random = new Random();
             bool isNewRandom = false;
             int positionH = 0;
             int positionV = 0;
 
-            //Third Shoot (repeated), 2 possible direction 
+            //Trzeci strzał lub więcej (2 możłiwe kierunnki)
             if (player.IsSecondShoot)
             {
                 while (!isNewRandom)
@@ -21,41 +21,79 @@ namespace BattleshipGame.Services
 
                     var direction = random.Next(1, 3);
 
-                    if (player.IsHorizontalInThirdShoot)
+                    if (!player.IsHorizontalInThirdShoot)
                     {
-                        // direction S
-                        if (direction == 1)
+                        // Jeżeli drugi strzał celny ale trzeci już pudło, pomóż znowu naprowadzić na poprawny strzał (pewność gdzie jest)
+                        var isFirstOptionDisabled = player.Shoots
+                            .Any(x => (x.Horizontal == (int)player.LastHitNoDestroyedPositionH && x.Vertical == (int)player.LastHitNoDestroyedPositionV - 1));
+                        var isSecondOptionDisabled = player.Shoots
+                            .Any(x => (x.Horizontal == (int)player.LastHitNoDestroyedPositionH && x.Vertical == (int)player.LastHitNoDestroyedPositionV + 1));
+
+                        if (isFirstOptionDisabled && isSecondOptionDisabled)
                         {
-                            positionH = (int)player.LastHitNoDestroyedPositionH;
-                            positionV = (int)player.LastHitNoDestroyedPositionV - 1;
+                            var shipToHit = enemy.Ships
+                            .FirstOrDefault(x => x.Positions
+                                .Any(y => (y.Horizontal == (int)player.LastHitNoDestroyedPositionH && y.Vertical == (int)player.LastHitNoDestroyedPositionV)));
+
+                            var generatePosition = shipToHit.Positions.FirstOrDefault(x => !x.isHit);
+                            positionH = generatePosition.Horizontal;
+                            positionV = generatePosition.Vertical;
                         }
-                        // direction N
                         else
                         {
-                            positionH = (int)player.LastHitNoDestroyedPositionH;
-                            positionV = (int)player.LastHitNoDestroyedPositionV + 1;
+                            // direction S (północ)
+                            if (direction == 1)
+                            {
+                                positionH = (int)player.LastHitNoDestroyedPositionH;
+                                positionV = (int)player.LastHitNoDestroyedPositionV - 1;
+                            }
+                            // direction N (południe)
+                            else
+                            {
+                                positionH = (int)player.LastHitNoDestroyedPositionH;
+                                positionV = (int)player.LastHitNoDestroyedPositionV + 1;
+                            }
                         }
                     }
                     else
                     {
-                        // direction E
-                        if (direction == 1)
+                        // Jeżeli drugi strzał celny ale trzeci już pudło, pomóż znowu naprowadzić na poprawny strzał (pewność gdzie jest)
+                        var isFirstOptionDisabled = player.Shoots
+                            .Any(x => (x.Horizontal == (int)player.LastHitNoDestroyedPositionH + 1 && x.Vertical == (int)player.LastHitNoDestroyedPositionV));
+                        var isSecondOptionDisabled = player.Shoots
+                            .Any(x => (x.Horizontal == (int)player.LastHitNoDestroyedPositionH - 1 && x.Vertical == (int)player.LastHitNoDestroyedPositionV));
+
+                        if (isFirstOptionDisabled && isSecondOptionDisabled)
                         {
-                            positionH = (int)player.LastHitNoDestroyedPositionH + 1;
-                            positionV = (int)player.LastHitNoDestroyedPositionV;
+                            var shipToHit = enemy.Ships
+                            .FirstOrDefault(x => x.Positions
+                                .Any(y => (y.Horizontal == (int)player.LastHitNoDestroyedPositionH && y.Vertical == (int)player.LastHitNoDestroyedPositionV)));
+
+                            var generatePosition = shipToHit.Positions.FirstOrDefault(x => !x.isHit);
+                            positionH = generatePosition.Horizontal;
+                            positionV = generatePosition.Vertical;
                         }
-                        // direction W
                         else
                         {
-                            positionH = (int)player.LastHitNoDestroyedPositionH - 1;
-                            positionV = (int)player.LastHitNoDestroyedPositionV;
+                            // direction E (Wschód)
+                            if (direction == 1)
+                            {
+                                positionH = (int)player.LastHitNoDestroyedPositionH + 1;
+                                positionV = (int)player.LastHitNoDestroyedPositionV;
+                            }
+                            // direction W (Zachód)
+                            else
+                            {
+                                positionH = (int)player.LastHitNoDestroyedPositionH - 1;
+                                positionV = (int)player.LastHitNoDestroyedPositionV;
+                            }
                         }
                     }
 
                     isNewRandom = player.Shoots.Any(x => x.Horizontal == positionH && x.Vertical == positionV) ? false : true;
                 }
             }
-            //Second Shoot (repeated), 4 possible direction 
+            // Drugi strzał (4 możliwe kierunki) 
             else if (player.LastHitNoDestroyedPositionH != null && player.LastHitNoDestroyedPositionV != null)
             {
                 while (!isNewRandom)
@@ -89,7 +127,7 @@ namespace BattleshipGame.Services
                     isNewRandom = player.Shoots.Any(x => x.Horizontal == positionH && x.Vertical == positionV) ? false : true;
                 }
             }
-            // First Shoot
+            // Pierwszy strzał
             else
             {
                 while (!isNewRandom)
@@ -97,7 +135,8 @@ namespace BattleshipGame.Services
                     positionH = random.Next(0, Configuration.HorizontalSize);
                     positionV = random.Next(0, Configuration.VerticalSize);
 
-                    isNewRandom = player.Shoots.Any(x => x.Horizontal == positionH && x.Vertical == positionV) ? false : true;
+                    isNewRandom = player.Shoots != null && player.Shoots
+                        .Any(x => x.Horizontal == positionH && x.Vertical == positionV) ? false : true;
                 }
             }
 

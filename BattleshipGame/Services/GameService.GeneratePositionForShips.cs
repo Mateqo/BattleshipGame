@@ -5,7 +5,7 @@ namespace BattleshipGame.Services
 {
     public partial class GameService
     {
-        public void GeneratePositionForShips(Player player)
+        public void GeneratePositionForShips(Player player, Player enemy)
         {
             Random random = new Random();
             char[] directions = { 'S', 'E', 'N', 'W' };
@@ -23,7 +23,7 @@ namespace BattleshipGame.Services
 
                     if (player.Board[startPositionV, startPositionH] == '-' && CanSelectPosition(Configuration.ShipsSize[i], startPositionV, startPositionH, direction, player))
                     {
-                        SelectPosition(Configuration.ShipsSize[i], startPositionV, startPositionH, direction, player);
+                        SelectPosition(Configuration.ShipsSize[i], startPositionV, startPositionH, direction, player, enemy);
                         isPlaced = true;
                     }
                 }
