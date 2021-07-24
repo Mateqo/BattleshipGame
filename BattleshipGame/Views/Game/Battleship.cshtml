@@ -70,6 +70,7 @@
         }
         function startGame() {
             clearBoards();
+            $('.start').hide();
             $('.spinner-border').show();
             $('.field').css('border', 'none');
             setTimeout(generateShips, 500);
@@ -140,6 +141,7 @@
                 else
                     $('#endText').text('YOU LOSE');
                 $('.end').show();
+                $('.start').show();
                 return;
             }
             setTimeout(function () {
